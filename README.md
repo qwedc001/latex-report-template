@@ -11,6 +11,7 @@
 ## 🚀 快速开始
 
 ### 方式 1：Overleaf 一键导入（推荐）
+
 点击下方按钮，直接在 Overleaf 中打开本项目：
 
 [![Open in Overleaf](https://img.shields.io/badge/Overleaf-Open%20in%20Overleaf-47a141?style=flat&logo=overleaf)](https://www.overleaf.com/docs?snip_uri=https://github.com/qwedc001/latex-report-template/archive/refs/heads/main.zip)
@@ -18,9 +19,12 @@
 > **注意**：导入后，请务必将 Overleaf 的编译器设置为 **XeLaTeX**（Menu -> Compiler -> XeLaTeX）。
 
 ### 方式 2：本地使用
+
 1. Clone 本仓库：
    ```bash
    git clone [https://github.com/](https://github.com/)<你的GitHub用户名>/<你的仓库名>.git
+
+   ```
 
 ```
 
@@ -41,4 +45,5 @@ A: 请重新编译一次（Recompile），LaTeX 通常需要编译两次才能�
 
 ## 📜 License
 
-MIT License
+CC BY-NC-SA
+```
