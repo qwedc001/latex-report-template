@@ -23,10 +23,7 @@
 1. Clone 本仓库：
    ```bash
    git clone [https://github.com/](https://github.com/)<你的GitHub用户名>/<你的仓库名>.git
-
    ```
-
-```
 
 2. 确保你的 TeX 发行版（TeX Live / MacTeX）已安装，并支持 `ctex` 宏包。
 3. 使用 `XeLaTeX` 编译 `main.tex`。
@@ -46,4 +43,3 @@ A: 请重新编译一次（Recompile），LaTeX 通常需要编译两次才能�
 ## 📜 License
 
 CC BY-NC-SA
-```
