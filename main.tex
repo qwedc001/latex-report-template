@@ -1,0 +1,130 @@
+\documentclass[a4paper,zihao=-4]{ctexrep}
+\input{setup}
+\begin{document}
+	\begin{cover}
+        \title{报告适用 LaTeX 模板}
+        \department{数学与人工智能}
+        \major{人工智能}
+        \name{qwedc001}
+        \stuid{998244353}
+        \instructor{Gemini 3 Pro}
+        % \grade{} 
+    \end{cover}
+    
+	\tableofcontents
+    
+    \begin{abstracts}
+        \cnabstract{
+            为了摆脱用 Word 写各种复杂的机器学习公式，我用 Gemini 3 Pro 喂出了一个和我们 Word 模板差不多样式的 \LaTeX 文件，然后顺利的用 \LaTeX 完成了工作。
+
+            所以我就在想，把这个文件模板化并且开源，是不是就能造福一些也会写 \LaTeX 并且不想被 Word 模板折磨的朋友。
+
+            所以我就这么干了。
+        }
+        \cnkeywords{\LaTeX 模板；AI 真是太好用了}
+        
+        \enabstract{
+            To avoid using Word to write those shitty formulas,I've used Gemini 3 (Thanks Google) to generate a \LaTeX file that looks similar to the original Word template.And I've finished my work.
+
+            Got me thinkin',I should make it opensource.
+
+            So I did this.
+        }
+        \enkeywords{\LaTeX \enspace template;Thanks Google}
+    
+    \end{abstracts}
+	
+	\chapter{绪论}
+	\songti
+	\section{研究背景}
+	就如摘要中所说，我本人本来是要自己做一个机器学习项目，但是被项目所需要的各种各样的代码，公式，图表插入搞的根本不想用学院提供的 Word 模板。要命的是学院只有 Word 模板。
+	
+	\section{本文主要工作}
+	针对上述问题，本文提出了一套解决方案，主要贡献如下：
+	\begin{itemize}
+		\item 允许使用者在 main.tex 里撰写整个报告内容，并且不用担心排版问题。
+		\item 重定义默认存放图片数据的根目录为 data 目录。例如你想引用 data/img1.png，只需要写以下内容。
+        \begin{lstlisting}[language=TeX, caption=引用图片举例]
+\includegraphics{img1.png}
+	    \end{lstlisting}
+		\item 允许通过 appendix 目录实现自定义引用内容：我在里面放了我们学校用的教师评价表。
+	\end{itemize}
+	
+	%---------------------------------------------------------------------------
+	% 第二章 核心算法设计
+	%---------------------------------------------------------------------------
+	\chapter{核心算法与系统设计}
+	
+	\section{预定义：setup.tex}
+	相比于直接把宏定义堆在 main.tex 中，我选择拆分出 setup.tex 来让 main 看上去更清爽一点。
+    \section{预定义：appendix}
+	你可以在这里添加自己想要的自定义界面。
+    
+    
+	\chapter{实验环境与工程实现}
+	
+	\section{硬件与软件环境}
+	本模板使用了多个软硬件环境进行编写，具体配置如下：
+	\begin{table}[H]
+		\centering
+		\caption{编写环境配置}
+		\begin{tabular}{ll}
+			\toprule
+			项目 & 配置详情 \\
+			\midrule
+			\textbf{Overleaf} & overleaf.com \\
+			\textbf{Gemini} & gemini.google.com \\
+			\textbf{我自己的电脑} & HP Omen 9 Pro \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	
+	%---------------------------------------------------------------------------
+	% 第四章 实验结果分析
+	%---------------------------------------------------------------------------
+	\chapter{实验结果与分析}
+	
+	\section{模板效果分析}
+	有效的帮我完成了我的报告任务。
+	
+	\section{模板作用评估}
+	\subsection{定量指标}
+	开源到 Github 上收集更多数据以后再更新。
+	
+	\begin{table}[H]
+		\centering
+		\caption{写作方法对比}
+		\begin{tabular}{lc}
+			\toprule
+			写作方法 & 痛度 \\
+			\midrule
+			Word & Severe \\
+			TexStudio + 单文件 report.tex & Mild \\
+			\textbf{Overleaf + 多文件模板} & \textbf{No pain} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\textbf{结果解读}：
+	\begin{enumerate}
+		\item 我认为模板和 Overleaf 很对。
+	\end{enumerate}
+	
+	\chapter{总结与展望}
+	希望本模板能提高各位写作效率。
+
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{参考文献}
+	\renewcommand{\bibname}{\heiti\zihao{4}\bfseries 参考文献}
+	
+	\begin{thebibliography}{99}
+		\zihao{5}
+		\setlength{\itemsep}{0pt}
+		\bibitem{ref1} Qilu University of Technology teachers Report Template//Class idk
+	\end{thebibliography}
+	
+	\input{appendix/teacher_review}
+	
+\end{document}

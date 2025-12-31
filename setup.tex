@@ -1,0 +1,175 @@
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{zhnumber}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{subcaption} 
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\graphicspath{{data/}}
+\geometry{left=3.17cm, right=3.17cm, top=2.54cm, bottom=2.54cm}
+\onehalfspacing
+\setmainfont{Times New Roman}
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{green!50!black},
+	stringstyle=\color{red},
+	frame=single,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	breaklines=true,
+	captionpos=b,
+	tabsize=4,
+	language=Python
+}
+
+\ctexset{
+	chapter = {
+		name = {第,章},
+		number = \chinese{chapter},
+		format = \centering\heiti\zihao{-3}\bfseries,
+		aftername = \quad,
+		beforeskip = 10pt,
+		afterskip = 20pt,
+	},
+	section = {
+		format = \heiti\zihao{4}\bfseries,
+		aftername = \quad,
+	},
+	subsection = {
+		format = \heiti\zihao{4}\bfseries,
+		aftername = \quad,
+		indent = 0pt,
+	},
+	contentsname={目\quad\quad 录}
+}
+
+\titlecontents{chapter}[0pt]{\addvspace{6pt}\bfseries}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+
+% ==========================================
+% 6. 摘要环境定义 (重构版 - 仿照封面风格)
+% ==========================================
+\makeatletter
+
+% 1. 定义内部存储变量
+\newcommand{\@abstr@cn}{}   % 中文摘要内容
+\newcommand{\@abstr@cnkw}{} % 中文关键词
+\newcommand{\@abstr@en}{}   % 英文摘要内容
+\newcommand{\@abstr@enkw}{} % 英文关键词
+
+% 2. 定义统一的 abstracts 环境
+\newenvironment{abstracts}{%
+    % --- 环境开始：定义命令捕获用户输入 ---
+    \newcommand{\cnabstract}[1]{\renewcommand{\@abstr@cn}{##1}}
+    \newcommand{\cnkeywords}[1]{\renewcommand{\@abstr@cnkw}{##1}}
+    \newcommand{\enabstract}[1]{\renewcommand{\@abstr@en}{##1}}
+    \newcommand{\enkeywords}[1]{\renewcommand{\@abstr@enkw}{##1}}
+}{%
+    % --- 环境结束：执行排版输出 ---
+    
+    % >>> 输出中文摘要页
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{摘要}
+    \markboth{摘要}{摘要}
+    
+    \begin{center}
+        \heiti\zihao{3}\bfseries 摘\quad\quad 要
+    \end{center}
+    
+    \vspace{1em} 
+    \fangsong\zihao{-4}
+    \@abstr@cn  % 输出中文内容
+    \par 
+    \vspace{1em}
+    \noindent\textbf{\heiti 关键词：}\@abstr@cnkw % 输出中文关键词
+    
+    % >>> 输出英文摘要页
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{ABSTRACT}
+    \markboth{ABSTRACT}{ABSTRACT}
+    
+    \begin{center}
+        \zihao{3}\bfseries ABSTRACT
+    \end{center}
+    
+    \vspace{1em} 
+    \zihao{-4}
+    \@abstr@en  % 输出英文内容
+    \par 
+    \vspace{1em}
+    \noindent\textbf{Key words: }\@abstr@enkw % 输出英文关键词
+}
+\makeatother
+
+% ==========================================
+% 5. 封面环境定义 (新增)
+% ==========================================
+\makeatletter
+
+% 定义内部存储变量，默认留空
+\newcommand{\@cover@title}{}
+\newcommand{\@cover@department}{}
+\newcommand{\@cover@major}{}
+\newcommand{\@cover@name}{}
+\newcommand{\@cover@stuid}{}
+\newcommand{\@cover@instructor}{}
+\newcommand{\@cover@grade}{}
+
+% 定义 cover 环境
+\newenvironment{cover}{%
+    % --- 环境开始：重定义命令以捕获用户输入 ---
+    \renewcommand{\title}[1]{\renewcommand{\@cover@title}{##1}}
+    \newcommand{\department}[1]{\renewcommand{\@cover@department}{##1}}
+    \newcommand{\major}[1]{\renewcommand{\@cover@major}{##1}}
+    \newcommand{\name}[1]{\renewcommand{\@cover@name}{##1}}
+    \newcommand{\stuid}[1]{\renewcommand{\@cover@stuid}{##1}}
+    \newcommand{\instructor}[1]{\renewcommand{\@cover@instructor}{##1}}
+    \newcommand{\grade}[1]{\renewcommand{\@cover@grade}{##1}}
+}{%
+    % --- 环境结束：执行实际的排版逻辑 ---
+    \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+        
+        % 标题部分
+        {\heiti\zihao{1} 课程设计报告 \par}
+        
+        \vspace{4cm}
+        
+        % 表格部分
+        {\zihao{3} \songti
+            \begin{tabular}{rc}
+                题\quad\quad 目 & \underline{\makebox[9cm]{\@cover@title}}      \\[1.5cm]
+                学\quad\quad 院 & \underline{\makebox[9cm]{\@cover@department}} \\[0.8cm]
+                专\quad\quad 业 & \underline{\makebox[9cm]{\@cover@major}}      \\[0.8cm]
+                姓\quad\quad 名 & \underline{\makebox[9cm]{\@cover@name}}       \\[0.8cm]
+                学\quad\quad 号 & \underline{\makebox[9cm]{\@cover@stuid}}      \\[0.8cm]
+                任课教师        & \underline{\makebox[9cm]{\@cover@instructor}} \\[0.8cm]
+                成\quad\quad 绩 & \underline{\makebox[9cm]{\@cover@grade}}      \\
+            \end{tabular}
+        }
+        
+        \vfill
+        
+        % 日期部分
+        {\zihao{3} \the\year \quad 年 \quad \the\month \quad 月 \quad \the\day \quad 日}
+        \vspace{2cm}
+    \end{titlepage}
+}
+\makeatother

@@ -1,0 +1,15 @@
+# .gitignore
+*.aux
+*.bb
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.dvi
+*.xdv
+_minted*

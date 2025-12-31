@@ -1,0 +1,47 @@
+\clearpage
+\thispagestyle{empty}
+
+\begin{center}
+    {\heiti\zihao{1} 课程设计验收评语表}
+\end{center}
+\vspace{0.5cm}
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    % 注意：X 列是自动换行的，所以内部换行要小心
+    \begin{tabularx}{\textwidth}{|X|}
+        \hline
+        % --- 第一栏：教师评语 ---
+        \vspace{0.5em}
+        {\heiti\zihao{4} \textbf{一、 教师评语}} \\ % 这里换行是在单元格内部换行
+        \rule{0pt}{10cm} % 撑开高度
+        \hfill {\songti\zihao{4} 教师签名：\underline{\hspace{5cm}}} \quad \quad \\[1em]
+        \hfill {\songti\zihao{4} \quad 年 \quad 月 \quad 日} \quad \quad \\[0.5em]
+        \hline
+        
+        % --- 第二栏：最终成绩 ---
+        \vspace{0.5em}
+        {\heiti\zihao{4} \textbf{二、 最终成绩}} \par % 使用 \par 结束标题段落
+        \vspace{1em}
+        
+        % 【修复重点】使用花括号限制 \centering 的作用范围
+        {
+            \centering 
+            \rule{0pt}{2cm} % 撑开高度
+            {\heiti\zihao{1} \underline{\hspace{6cm}}} % 成绩下划线
+            \par % 结束居中段落
+        }
+        
+        \vspace{1em}
+        \\ % 这里的 \\ 现在可以正常结束表格行了
+        \hline
+        
+        % --- 第三栏：备注 ---
+        \vspace{0.5em}
+        {\heiti\zihao{4} \textbf{三、 备注}} \\
+        \rule{0pt}{4cm} % 撑开高度
+        \\
+        \hline
+    \end{tabularx}
+\end{table}
